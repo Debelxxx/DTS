@@ -1,0 +1,118 @@
+<?php
+
+include('connect.php');
+include('add_document.php');
+
+include('track_document.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Tracking System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #form-container {
+            width: 400px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form-container">
+        <h1>Document Tracking System</h1>
+
+        <h2>Add Document</h2>
+        <form action="add_document.php" method="post">
+            <label for="document_name">Document Name:</label>
+            <input type="text" id="document_name" name="document_name" required>
+            <label for="destination_office">Destination Office:</label>
+            <select id="destination_office" name="destination_office" required>
+                <option value="1">Office A</option>
+                <option value="2">Office B</option>
+                <option value="3">Office C</option>
+            </select>
+            <label for="document_description">Document Description:</label>
+            <textarea id="document_description" name="document_description" rows="4" cols="50"></textarea>
+            <input type="submit" value="Add Document">
+        </form>
+
+        <h2>Delete Document</h2>
+        <form action="delete_document.php" method="post">
+            <label for="document_id_delete">Document ID to Delete:</label>
+            <input type="text" id="document_id_delete" name="document_id" required>
+            <input type="submit" value="Delete Document">
+        </form>
+
+        <div class="message" id="message">
+            <!-- Success or error message will be displayed here -->
+        </div>
+
+        <h2>Track Document</h2>
+        <form action="track_document.php" method="post">
+            <label for="document_id">Document ID:</label>
+            <input type="text" id="document_id" name="document_id" required>
+            <input type="submit" value="Track Document">
+        </form>
+        <div class="tracking-result">
+            <!-- Tracking result will be displayed here -->
+        </div>
+    </div>
+</body>
+
+</html>
